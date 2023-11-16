@@ -52,4 +52,4 @@ EXPOSE 80
 
 COPY --chmod=0755 ./eprintshttpd-entrypoint.sh .
 
-CMD ["/eprintshttpd-entrypoint.sh"]
+ENTRYPOINT ["/eprintshttpd-entrypoint.sh"]

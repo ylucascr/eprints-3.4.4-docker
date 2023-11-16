@@ -8,4 +8,4 @@ su -c "./usr/share/eprints/bin/epadmin update pub" eprints # ensure the admin us
 su -c "./usr/share/eprints/bin/epadmin reload pub" eprints # reload the archive's configuration
 
 echo Restarting web server...
-httpd -k restart
+httpd -k restart -DFOREGROUND

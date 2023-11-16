@@ -26,7 +26,6 @@ services:
     volumes:
       - eprints:/usr/share/eprints
       - ./shared:/var/shared
-    command: "httpd -k start -DFOREGROUND"
     depends_on:
       eprintsdb:
         condition: service_healthy
