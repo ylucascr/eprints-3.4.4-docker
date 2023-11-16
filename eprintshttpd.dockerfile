@@ -49,3 +49,7 @@ RUN chown -R eprints:eprints /usr/share/eprints/
 RUN su eprints -c "/usr/share/eprints/bin/indexer start"
 
 EXPOSE 80
+
+COPY --chmod=0755 ./eprintshttpd-entrypoint.sh .
+
+CMD ["/eprintshttpd-entrypoint.sh"]

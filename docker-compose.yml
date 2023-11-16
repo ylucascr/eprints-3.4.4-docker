@@ -9,6 +9,11 @@ services:
     container_name: eprintsdb
     volumes:
       - mariadb:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--su=mysql", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 2s
+      retries: 10
   eprintshttpd:
     build:
       context: .
@@ -22,6 +27,9 @@ services:
       - eprints:/usr/share/eprints
       - ./shared:/var/shared
     command: "httpd -k start -DFOREGROUND"
+    depends_on:
+      eprintsdb:
+        condition: service_healthy
 volumes:
   eprints:
   mariadb:
